@@ -87,7 +87,9 @@ test(`calls addWord from dbUtils on adding new word`, async () => {
     .spyOn(wordsService, "getWordInfo")
     .mockImplementationOnce(() => MyWords[0]);
 
-  const user = userEvent.setup();
+ const user = userEvent.setup({
+  advanceTimers: jest.advanceTimersByTime,
+});
 
   render(
     <Provider store={store}>
